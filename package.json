@@ -6,10 +6,21 @@
   "scripts": {
     "start": "electron ."
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konstantinacode/PomodoroTimerApp.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/konstantinacode/PomodoroTimerApp/issues"
+  },
+  "homepage": "https://github.com/konstantinacode/PomodoroTimerApp#readme",
   "devDependencies": {
     "electron-prebuilt": "^1.4.13"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
   }
 }

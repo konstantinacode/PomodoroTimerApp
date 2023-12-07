@@ -1,25 +1,27 @@
 <head>
     <title>Pomodoro Timer</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- <script src="js/jquery-3.7.1.min.js"></script> -->
 </head>
 <body>
     <h1 id="title">Pomodoro Timer</h1>
     
     <div id="container">
       <input id="task" type="text" value="Type your task here." onblur="taskBlur()" onfocus="taskFocus()"></input>
-      <h2 id="help">Enter your task.</h2>
-      <div id="slider-box">
+      <div id="help">Enter your task above</div>
+      <!-- <div id="slider-box">
         <div id="slider"></div>
-      </div>
+      </div> -->
+      <div id="startBtn" onclick="startTimer()">Start</div>
       <h2 id="break">&nbsp;</h2>
       <h2 id="log">&nbsp;</h2>
-      <h2>Pomodoro: <input id="pomo-time" class="settings" type="number" value="25" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</h2>
-      <h2>Short break: <input id="shrt-brk-time" class="settings" type="number" value="5" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</h2>
-      <h2>Long break: <input id="lng-brk-time" class="settings" type="number" value="30" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</h2>
-    <h2 id="sound-option">Sound: <input id="sound-chk" type="checkbox" name="sound" checked="true"></h2>
-      <button id="cancel-btn">Cancel</button>
+      <div>Pomodoro: <input id="pomo-time" class="settings" type="number" value="25" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
+      <div>Short break: <input id="shrt-brk-time" class="settings" type="number" value="5" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
+      <div>Long break: <input id="lng-brk-time" class="settings" type="number" value="30" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
+      <div id="sound-option">Sound: <input id="sound-chk" type="checkbox" name="sound" checked="true"></div>
+      <button id="cancel-btn" onclick="cancelTimer()">Cancel</button>
     </div>
 
-    <script>require('./js/index')</script>
+    <script src="js/index.js"></script>
 </body>
 </html>

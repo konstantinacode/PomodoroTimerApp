@@ -5,7 +5,7 @@ body {
 #title{
   text-align: center;
   margin: 24px auto;
-  font-size: 3.998em;
+  /* font-size: 3.998em; */
   font-weight: 800;
 }
 
@@ -21,24 +21,28 @@ body {
 }
 
 #task {
-  padding-left: 6px;
-  font-size: 1.414em;
+  padding: 15px;
+  font-size: 1.2em;
   width: 294px;
+  text-align: center;
+  border: 1px solid blueviolet;
+  border-radius: 10px;
 }
 
 
 #help{
   margin: 48px 0;
-  font-size: 2em;
+  font-style: italic;
+  /* font-size: 2em; */
 }
 
-#slider-box {
+/* #slider-box {
   height: 36px;
   width: 100%;
   background-color: grey;
   border: 1px solid black;
   margin-bottom: 12px;
-}
+} */
 
 #slider {
   padding-top: 10px;
@@ -50,6 +54,13 @@ body {
   color: white;
   text-align: center;
   font-family: 'Overpass Mono', monospace;
+}
+
+#startBtn {
+  padding: 15px;
+  background-color: antiquewhite;
+  border: 1px solid;
+  font-weight: bold;
 }
 
 #break{
@@ -66,9 +77,10 @@ body {
 }
 
 .settings {
-  width: 36px;
+  width: 40px;
   margin-bottom: 8px;
   font-size: 1em;
+  text-align: center;
 }
 
 #cancel-btn {
