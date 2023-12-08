@@ -13,32 +13,19 @@ var audioTick = document.createElement('audio');
 audioTick.setAttribute('src', 'https://freesound.org/data/previews/254/254315_4062622-lq.mp3');
 audioTick.volume = 0.1;
 
-function taskFocus(){
-  if ($("#task").val() == "Type your task here."){
-    $("#task").val("");
-  }
-}
-
-function taskBlur(){
-    if($("#task").val() == ""){
-      $("#task").val("Type your task here.");
-      $("#help").html("Enter your task above");
-    }else{
-      $("#help").html("Press Start to begin!");
-    }
- }
- 
 function startTimer(){
+  $(".settingsSection").hide();
+  $("#startBtn").hide();
+  $(".timerSection").show();
+  $("#cancel-btn").show();
+
+
     var pomoTime = $("#pomo-time").val();
     var shortBreakTime = $("#shrt-brk-time").val();
     var longBreakTime = $("#lng-brk-time").val();
-    if (!$("#task").val() || $("#task").val() == "Type your task here.") {
-        alert("Please enter your current task.");
-        return;
-    }
+
     breakCounted = false;
     pomoCounted = false;
-    $("#help").html("Time to work!");
     var miliPomo = pomoTime * 60 * 1000;
     var currentTimePomo = miliPomo;
     if (!timerStarted) {
@@ -46,7 +33,6 @@ function startTimer(){
         var pomoTimer = setInterval(function() {
           if (cancel) {
             clearInterval(pomoTimer);
-            $("#help").html("Press Start to begin!");
             cancel = false;
             timerStarted = false;
           } else {
@@ -59,21 +45,19 @@ function startTimer(){
               audioTick.play();
             }
             $("#state").html("Focus!");
-            var minutesPomo = Math.floor(currentTimePomo % (1000 * 60 * 60) / (1000 * 60)); //remaining minutes 
-            var secondsPomo = ("0" + Math.floor(currentTimePomo % (1000 * 60) / 1000)).slice(-2); //remaining seconds
-            $("#log").html(minutesPomo + " : " + secondsPomo);
+            var minutesPomo = Math.floor(currentTimePomo % (1000 * 60 * 60) / (1000 * 60)); 
+            var secondsPomo = ("0" + Math.floor(currentTimePomo % (1000 * 60) / 1000)).slice(-2); 
+            $("#countdown").html(minutesPomo + " : " + secondsPomo);
             if (currentTimePomo <= 0) {
               clearInterval(pomoTimer);
               $("#state").html("Break Time!");
-              $("#log").html("");
+              $("#countdown").html("");
               if ($("#sound-chk").prop('checked')){
                 audioEnd.play();
               }
               pomodoroCount++;
-              $("#help").html("Take a short break");
               var miliBreak = shortBreakTime * 60 * 1000;
               if (breakCount == 4) {
-                $("#help").html("Take a long break");
                 miliBreak = longBreakTime * 60 * 1000;
               }
               var currentTimeBreak = miliBreak;
@@ -83,9 +67,9 @@ function startTimer(){
             }else{
               currentTimeBreak = 0;
             }
-                var minutesBreak = Math.floor(currentTimeBreak % (1000 * 60 * 60) / (1000 * 60));
+                var minutesBreak = Math.floor(currentTimeBreak % (1000 * 60 * 60) / (1000 * 60)); 
                 var secondsBreak = ("0" +Math.floor(currentTimeBreak % (1000 * 60) / 1000)).slice(-2);
-                $("#log").html(minutesBreak + " : " + secondsBreak);
+                $("#countdown").html(minutesBreak + " : " + secondsBreak);
                 if (currentTimeBreak <= 0 || cancel) {
                   clearInterval(breakTimer);
                   if (!cancel){
@@ -102,7 +86,6 @@ function startTimer(){
                   } else {
                     breakCount = 0;
                   }
-                  $("#help").html("Press Start to begin again!");
                   $("#break").html(checkBoxes); 
                   timerStarted = false;
                   cancel = false;
@@ -115,8 +98,11 @@ function startTimer(){
 }
 
 function cancelTimer() {
-    $("#help").html("Cancelled");
+    $(".settingsSection").show();
+    $("#startBtn").show();
+    $(".timerSection").hide();
+    $("#cancel-btn").hide();
     cancel = true;
-    $("#log").html("");
+    $("#countdown").html("");
     $("#state").html("");
   }

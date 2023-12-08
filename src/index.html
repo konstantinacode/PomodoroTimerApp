@@ -4,19 +4,20 @@
 </head>
 <body>
     <h1 id="title">Pomodoro Timer</h1>
-    
-    <div id="container">
-      <input id="task" type="text" value="Type your task here." onblur="taskBlur()" onfocus="taskFocus()"></input>
-      <div id="help">Enter your task above</div>
-      <div id="startBtn" onclick="startTimer()">Start</div>
-      <h2 id="state">&nbsp;</h2>
-      <h2 id="log">&nbsp;</h2>
-      <div>Pomodoro: <input id="pomo-time" class="settings" type="number" value="25" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
-      <div>Short break: <input id="shrt-brk-time" class="settings" type="number" value="5" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
-      <div>Long break: <input id="lng-brk-time" class="settings" type="number" value="30" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
+
+    <div class="settingsSection">
+      <div class="setting"><span>Focus Time: </span><input id="pomo-time" class="settings" type="number" value="25" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
+      <div class="setting"><span>Short break: </span><input id="shrt-brk-time" class="settings" type="number" value="5" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
+      <div class="setting"><span>Long break: </span><input id="lng-brk-time" class="settings" type="number" value="30" onblur="if (this.value < 0) {this.value = 0;}"></input> minutes</div>
       <div id="sound-option">Sound: <input id="sound-chk" type="checkbox" name="sound" checked="true"></div>
-      <button id="cancel-btn" onclick="cancelTimer()">Cancel</button>
     </div>
+    <div id="startBtn" onclick="startTimer()">Start</div>
+
+    <div class="timerSection" style="display: none;">
+      <div id="state"></div>
+      <div id="log"></div>
+    </div>
+    <div id="cancel-btn" onclick="cancelTimer()" style="display: none;">Cancel</div>
 
     <script src="js/index.js"></script>
 </body>

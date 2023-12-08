@@ -12,7 +12,7 @@ app.on('ready', _ => {
         width: 500
     })
 
-    //mainWindow.openDevTools()
+    mainWindow.openDevTools()
 
     mainWindow.loadURL(`file://${__dirname}/../index.html`)
 

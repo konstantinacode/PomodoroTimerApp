@@ -1,74 +1,91 @@
 body {
   font-family: 'Raleway', sans-serif;
+  background-color: rgba(205, 162, 216, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
-#title{
+#title {
   text-align: center;
-  margin: 24px auto;
-  font-weight: 800;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #4B0082;
 }
 
-#desc{
+.settingsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.setting, #sound-option {
+  padding: 5px;
+  font-size: 15px;
+}
+
+.setting {
+  display: flex;
+  align-items: center;
+}
+
+input.settings {
+  width: 40px;
+  padding: 5px;
   text-align: center;
-  margin-bottom: 48px;
+  margin: 0 8px;
 }
 
-#container {
-  width: 300px;
-  margin: 36px auto;
-  text-align: center;
+span {
+  width: 82px;
 }
 
-#task {
-  padding: 15px;
-  font-size: 1.2em;
-  width: 294px;
-  text-align: center;
-  border: 1px solid blueviolet;
-  border-radius: 10px;
-}
-
-
-#help{
-  margin: 48px 0;
-  font-style: italic;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 #startBtn {
-  padding: 15px;
-  background-color: antiquewhite;
-  border: 1px solid;
-  font-weight: bold;
-}
-
-#startBtn:hover{
+  width: 150px;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  border: 1px solid #4B0082;
+  border-radius: 20px;
+  background-color: #4B0082;
   cursor: pointer;
 }
 
-#state{
-  margin-bottom: 12px;
-  font-size: 36px;
-  color: #2e5c39;
+#state {
+  padding: 40px 0;
+  font-size: 33px;
+  color: #1f8b2e;
+  letter-spacing: 6px;
 }
 
-#log {
-  padding: 6px;
-  min-height: 24px;
-  margin-bottom: 36px;
-}
-
-.settings {
-  width: 40px;
-  margin-bottom: 8px;
-  font-size: 1em;
+#countdown {
+  padding: 40px 0;
+  font-size: 26px;
+  color: #4b0082;
+  letter-spacing: 6px;
   text-align: center;
 }
 
 #cancel-btn {
-  background-color: #B21E0E;
-  border-style: none;
+  width: 150px;
+  padding: 10px;
+  font-size: 18px;
   color: white;
-  font-size: 1em;
-  margin: 24px;
-  padding: 6px 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  border: 1px solid #4B0082;
+  border-radius: 20px;
+  background-color: #de3163;
+  cursor: pointer;
 }
