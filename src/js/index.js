@@ -5,8 +5,6 @@ var breakCount = 0;
 var pomodoroCount = 0;
 var timerStarted = false;
 var cancel = false;
-var logText = "";
-var leftPos = 228;
 
 var audioEnd = document.createElement('audio');
 audioEnd.setAttribute('src', 'https://freesound.org/data/previews/402/402067_6142149-lq.mp3');
@@ -36,6 +34,7 @@ function startTimer(){
     var longBreakTime = $("#lng-brk-time").val();
     if (!$("#task").val() || $("#task").val() == "Type your task here.") {
         alert("Please enter your current task.");
+        return;
     }
     breakCounted = false;
     pomoCounted = false;
@@ -59,24 +58,18 @@ function startTimer(){
             if ($("#sound-chk").prop('checked')){
               audioTick.play();
             }
-            var minutesPomo = Math.floor(
-              currentTimePomo % (1000 * 60 * 60) / (1000 * 60)
-            );
-            var secondsPomo = ("0" +
-              Math.floor(currentTimePomo % (1000 * 60) / 1000)).slice(-2);
-            
+            $("#state").html("Focus!");
+            var minutesPomo = Math.floor(currentTimePomo % (1000 * 60 * 60) / (1000 * 60)); //remaining minutes 
+            var secondsPomo = ("0" + Math.floor(currentTimePomo % (1000 * 60) / 1000)).slice(-2); //remaining seconds
+            $("#log").html(minutesPomo + " : " + secondsPomo);
             if (currentTimePomo <= 0) {
               clearInterval(pomoTimer);
+              $("#state").html("Break Time!");
+              $("#log").html("");
               if ($("#sound-chk").prop('checked')){
                 audioEnd.play();
               }
               pomodoroCount++;
-              logText = $("#log").html() +
-                pomodoroCount +
-                '&emsp; <input class="log-box" type="text" onblur="logBlur(this)" value="' +
-                $("#task").val() +
-                '"></input><br>';
-              $("#log").html(logText);
               $("#help").html("Take a short break");
               var miliBreak = shortBreakTime * 60 * 1000;
               if (breakCount == 4) {
@@ -90,11 +83,9 @@ function startTimer(){
             }else{
               currentTimeBreak = 0;
             }
-                var minutesBreak = Math.floor(
-                  currentTimeBreak % (1000 * 60 * 60) / (1000 * 60)
-                );
-                var secondsBreak = ("0" +
-                  Math.floor(currentTimeBreak % (1000 * 60) / 1000)).slice(-2);
+                var minutesBreak = Math.floor(currentTimeBreak % (1000 * 60 * 60) / (1000 * 60));
+                var secondsBreak = ("0" +Math.floor(currentTimeBreak % (1000 * 60) / 1000)).slice(-2);
+                $("#log").html(minutesBreak + " : " + secondsBreak);
                 if (currentTimeBreak <= 0 || cancel) {
                   clearInterval(breakTimer);
                   if (!cancel){
@@ -112,7 +103,7 @@ function startTimer(){
                     breakCount = 0;
                   }
                   $("#help").html("Press Start to begin again!");
-                  $("#break").html(checkBoxes);
+                  $("#break").html(checkBoxes); 
                   timerStarted = false;
                   cancel = false;
                 }
@@ -124,6 +115,8 @@ function startTimer(){
 }
 
 function cancelTimer() {
-    $("#help").html("Cancelled")
+    $("#help").html("Cancelled");
     cancel = true;
+    $("#log").html("");
+    $("#state").html("");
   }

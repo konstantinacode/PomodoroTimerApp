@@ -5,7 +5,6 @@ body {
 #title{
   text-align: center;
   margin: 24px auto;
-  /* font-size: 3.998em; */
   font-weight: 800;
 }
 
@@ -33,27 +32,6 @@ body {
 #help{
   margin: 48px 0;
   font-style: italic;
-  /* font-size: 2em; */
-}
-
-/* #slider-box {
-  height: 36px;
-  width: 100%;
-  background-color: grey;
-  border: 1px solid black;
-  margin-bottom: 12px;
-} */
-
-#slider {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  min-height: 16px;
-  width: 72px;
-  font-size: 16px;
-  background-color: gainsboro;
-  color: white;
-  text-align: center;
-  font-family: 'Overpass Mono', monospace;
 }
 
 #startBtn {
@@ -63,15 +41,18 @@ body {
   font-weight: bold;
 }
 
-#break{
+#startBtn:hover{
+  cursor: pointer;
+}
+
+#state{
   margin-bottom: 12px;
   font-size: 36px;
-  color: #B21E0E;
+  color: #2e5c39;
 }
 
 #log {
   padding: 6px;
-  border: 1px solid black;
   min-height: 24px;
   margin-bottom: 36px;
 }
